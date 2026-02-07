@@ -441,6 +441,64 @@ Examples:
 
 - When testing endpoints/methods that accept a list o
 
+## Code Review
+
+When reviewing a PR, always provide a structured assessment with scores.
+
+### Scoring
+
+- Rate every category on a **1-100 scale**
+- Provide an **overall score** (weighted by relevance, not a simple average)
+- Scores are advisory — no automatic approve/reject thresholds
+
+### Categories
+
+**Always include these fixed categories:**
+
+| Category | Focus Areas |
+|----------|------------|
+| **Security** | OWASP top 10, input validation, auth/authz, secrets exposure |
+| **Performance** | N+1 queries, caching, hot paths, async patterns, allocations |
+| **Architecture** | Clean Architecture, SOLID, separation of concerns, dependency direction |
+| **Consistency** | Adherence to existing codebase conventions, naming, patterns, style |
+| **Testing** | Test coverage, test quality, edge cases, appropriate test level |
+| **Readability** | Code clarity, naming, complexity, documentation |
+| **Error Handling** | Result pattern, fail-fast, edge cases, logging, resilience |
+
+**Additionally, select 3-6 context-specific categories** that are relevant to the particular PR. Examples:
+
+- **Concurrency** — for code with shared state or database writes
+- **API Design** — for new/changed endpoints (REST conventions, status codes, OpenAPI)
+- **Database** — for migrations, queries, indexes, EF Core usage
+- **Frontend** — for Lit components, Shadow DOM, accessibility
+- **Breaking Changes** — when public API surface is affected
+- **Observability** — for logging, tracing, health checks
+- **Configuration** — for DI registration, options, environment handling
+- **Domain Modeling** — for value objects, aggregates, invariants
+
+### Output Format
+
+**1. Score table** at the top:
+
+```markdown
+| Category | Score | Comment |
+|----------|------:|---------|
+| **Overall** | **75** | |
+| Security | 90 | No issues found |
+| Performance | 60 | Potential N+1 in GetUsers |
+| Architecture | 80 | Clean separation |
+| ... | ... | ... |
+```
+
+**2. Categorized comments** below the table, grouped by severity:
+
+- **Critical** — Must fix before merge (security vulnerabilities, data loss risks, broken functionality)
+- **Important** — Should fix, significant quality concern (performance issues, missing tests, architectural violations)
+- **Suggestion** — Nice to have, improvement opportunity (readability, minor refactoring, alternative approaches)
+- **Praise** — Highlight good patterns and decisions worth noting
+
+Each comment should reference the specific file and line, explain the issue, and suggest a fix when applicable.
+
 ## Umbraco Brand Guidelines
 
 When creating UI, marketing materials, or any visual assets, follow the official Umbraco brand guidelines.
