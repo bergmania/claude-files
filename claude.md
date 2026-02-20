@@ -101,7 +101,7 @@ When making decisions, prioritize:
 ## Tech Stack
 
 - **Backend:** C# (.NET latest)
-- **Frontend:** TypeScript with Lit (native web components)
+- **Frontend:** React 19 with TypeScript
 - **Database:** PostgreSQL (or MSSQL where specified)
 - **ORM:** Entity Framework Core (EF Core)
 - **JSON:** System.Text.Json
@@ -224,12 +224,14 @@ Follow **Clean Architecture**:
 
 ## Frontend (TypeScript)
 
-### Web Components with Lit
+### React Frontend
 
-- Use **Lit** for building native web components
-- Follow web component standards and best practices
+- Use **React 19** with functional components and hooks
+- Use **React Aria Components** for accessible UI patterns
+- Use **styled-components** for CSS-in-JS styling (component-scoped `.styles.tsx` files)
+- Use **TanStack Query** for server state management
+- Use **React Router DOM** for routing
 - Keep components small and focused on single responsibility
-- Use Shadow DOM for style encapsulation
 
 ### API Client Generation
 
@@ -470,7 +472,7 @@ When reviewing a PR, always provide a structured assessment with scores.
 - **Concurrency** — for code with shared state or database writes
 - **API Design** — for new/changed endpoints (REST conventions, status codes, OpenAPI)
 - **Database** — for migrations, queries, indexes, EF Core usage
-- **Frontend** — for Lit components, Shadow DOM, accessibility
+- **Frontend** — for React components, styled-components, accessibility
 - **Breaking Changes** — when public API surface is affected
 - **Observability** — for logging, tracing, health checks
 - **Configuration** — for DI registration, options, environment handling
